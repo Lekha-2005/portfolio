@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lekha G - Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+
+        :root {
+            --primary-color: #4834d4;
+            --secondary-color: #686de0;
+            --text-color: #2d3436;
+            --bg-color: #f5f6fa;
+            --card-bg: #ffffff;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 6rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 100px;
+            background: var(--bg-color);
+            clip-path: polygon(0 50%, 100% 0, 100% 100%, 0% 100%);
+        }
+
+        .profile-container {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .profile-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 5px solid white;
+            object-fit: cover;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        header h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        header h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            opacity: 0.9;
+        }
+
+        .btn-container {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .btn {
+            background-color: white;
+            color: var(--primary-color);
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .location {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            font-size: 1rem;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 5rem 0;
+            position: relative;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            color: var(--primary-color);
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: var(--secondary-color);
+            border-radius: 2px;
+        }
+
+        /* Cards */
+        .card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 2rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        /* Education Section */
+        .education-card {
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .education-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-card {
+            text-align: center;
+        }
+
+        .skill-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+        }
+
+        .project-tag {
+            background: var(--primary-color);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-size: 0.875rem;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        /* Internships Section */
+        .internships-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .internship-card {
+            text-align: center;
+        }
+
+        .company-logo {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            object-fit: cover;
+        }
+
+        .internship-quote {
+            font-style: italic;
+            margin-bottom: 3rem;
+            text-align: center;
+            font-size: 1.2rem;
+            color: #666;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.5rem;
+            transition: transform 0.3s;
+        }
+
+        .social-links a:hover {
+            transform: translateY(-3px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .profile-container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            header h1 {
+                font-size: 2.5rem;
+            }
+
+            header h2 {
+                font-size: 1.5rem;
+            }
+
+            .projects-grid,
+            .internships-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .education-card {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <div class="profile-container">
+                <img src="/PICTURE/image-350x450.jpg" alt="Lekha G" class="profile-image">
+                <div>
+                    <h1>LEKHA G</h1>
+                    <h2>COMPUTER SCIENCE STUDENT</h2>
+                    <p>Hello, World!</p>
+                    <p>Here's a glimpse of my skills & interests</p>
+                    <div class="btn-container">
+                        <button class="btn"><a href="/PICTURE/FINAL RESUME(2).pdf" download> RESUME</a>   </button>
+                        <button class="btn" ><a href="#sec">PROJECTS</a></button>
+                    </div>
+                    <div class="location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>AVADI CHENNAI</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section>
+        <div class="container">
+            <h2 class="section-title">ABOUT ME</h2>
+            <div class="card">
+                <p class="about-text">
+                    I am a computer science student with basic knowledge of HTML, CSS, JavaScript,
+                    Java, C, C++. One of my future goals is to become a full-stack web developer. This is
+                    a great time for me to learn and develop my skills further by creating projects and
+                    learning new technologies. I consider myself to be a highly dedicated and motivated
+                    individual with a strong passion for technology and innovation. I am always eager to
+                    learn and grow, seeking opportunities that challenge me and allow me to contribute
+                    meaningfully.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section>
+        <div class="container">
+            <h2 class="section-title">EDUCATION</h2>
+            <div class="education-card card">
+                <i class="fas fa-graduation-cap education-icon"></i>
+                <div>
+                    <h3>BE-CSE</h3>
+                    <h4>RMD ENGINEERING COLLEGE</h4>
+                    <p>2022-2028</p>
+                    <p>CGPA: 8.64</p>
+                </div>
+            </div>
+            <div class="education-card card">
+                <i class="fas fa-school education-icon"></i>
+                <div>
+                    <h3>CLASS 12</h3>
+                    <h4>VIJAYANTA MODEL HIGHER SECONDARY SCHOOL</h4>
+                    <p>2022 - 90.5%</p>
+                </div>
+            </div>
+            <div class="education-card card">
+                <i class="fas fa-school education-icon"></i>
+                <div>
+                    <h3>CLASS 10</h3>
+                    <h4>VIJAYANTA SENIOR SECONDARY SCHOOL</h4>
+                    <p>2020 - 90.2%</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section>
+        <div class="container">
+            <h2 class="section-title">Professional Skillset</h2>
+            <div class="skills-grid">
+                <div class="skill-card card">
+                    <i class="fas fa-code skill-icon"></i>
+                    <h3>Programming</h3>
+                    <p>Java, C++, SQL</p>
+                </div>
+                <div class="skill-card card">
+                    <i class="fas fa-paint-brush skill-icon"></i>
+                    <h3>Design</h3>
+                    <p>UI/UX Design</p>
+                </div>
+                <div class="skill-card card">
+                    <i class="fas fa-laptop-code skill-icon"></i>
+                    <h3>Web Development</h3>
+                    <p>HTML, CSS, JavaScript</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section >
+        <div class="container" id="sec">
+            <h2 class="section-title">PROJECTS</h2>
+            <div class="projects-grid">
+                <div class="project-card card">
+                    <img src="/PICTURE/Screenshot 2025-01-01 125350.png" alt="Live Captioning App" class="project-image">
+                    <span class="project-tag">TEAM PROJECT</span>
+                    <h3>Live Captioning Application For Deaf People</h3>
+                    <p>A live captioning application designed to provide real-time subtitles for audio content using advanced speech recognition technology.</p>
+                </div>
+                <div class="project-card card">
+                    <img src="/PICTURE/DALL·E 2025-01-01 13.17.36 - A conceptual design of a mobile app interface for a Multi-Mode Route Recommendation App. The screen displays an interactive map with a recommended rou.webp" alt="Route Recommendation App" class="project-image">
+                    <span class="project-tag">TEAM PROJECT</span>
+                    <h3>Multi-Mode Route Recommendation App</h3>
+                    <p>An app that optimizes travel by integrating various transportation modes with real-time updates and AI-powered suggestions.</p>
+                </div>
+                <div class="project-card card">
+                    <img src="/PICTURE/DALL·E 2025-01-01 13.16.33 - A conceptual design of a vibratory pillow with an integrated reminder system. The pillow is rectangular, modern, and ergonomic, featuring a sleek, sof.webp" alt="Vibratory Pillow" class="project-image">
+                    <span class="project-tag">TEAM PROJECT</span>
+                    <h3>Vibratory Pillow with Reminder System</h3>
+                    <p>A smart pillow system with embedded vibration motors for silent alerts, featuring smartphone integration and customizable schedules.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Internships Section -->
+    <section>
+        <div class="container">
+            <h2 class="section-title">INTERNSHIPS</h2>
+            <p class="internship-quote">
+                "My internships have greatly enhanced my understanding of various industries. Through both
+                online and offline programs, I've acquired valuable knowledge about different technologies
+                and techniques that are essential in today's jobs."
+            </p>
+            <div class="internships-grid">
+                <div class="internship-card card">
+                    
+                    <h3>CODSOFT</h3>
+                    <p>UI/UX designer enhancing creativity and problem-solving skills through user-friendly interface design.</p>
+                </div>
+                <div class="internship-card card">
+                   
+                    <h3>8 QUEENS SOFTWARE LIMITED</h3>
+                    <p>Full-stack developer gaining hands-on experience in both front-end and back-end development.</p>
+                </div>
+                <div class="internship-card card">
+                   
+                    <h3>PRODIGY INFOTECH</h3>
+                    <p>Web developer creating dynamic and responsive websites with practical experience in full-stack development.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="https://github.com/Lekha-2005" aria-label="GitHub">GitHub</a>
+                <a href="mailto:lekhaggopi@gmail.com" aria-label="Email">Email</a>
+                <a href="https://www.linkedin.com/in/lekha-g/" aria-label="LinkedIn">LinkedIn</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
